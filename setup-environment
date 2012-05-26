@@ -1,0 +1,100 @@
+#!/bin/sh
+# -*- mode: shell-script-mode; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+#
+# Copyright (C) 2012 O.S. Systems Software LTDA.
+# Authored-by:  Otavio Salvador <otavio@ossystems.com.br>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+
+if [ -z "$MACHINE" ]; then
+    MACHINE='imx53qsb'
+fi
+
+if [ -z "$SDKMACHINE" ]; then
+    SDKMACHINE='i686'
+fi
+
+if [ -z "$DISTRO" ]; then
+    DISTRO='poky'
+fi
+
+OEROOT=sources/poky
+if [ -e sources/oe-core ]; then
+    OEROOT=sources/oe-core
+fi
+
+CWD=`pwd`
+
+cd $OEROOT
+
+. ./oe-init-build-env $CWD/$1 > /dev/null
+
+generated_config=
+if [ ! -e conf/local.conf.sample ]; then
+    mv conf/local.conf conf/local.conf.sample
+
+    # Generate the local.conf
+    TEMPLATES=$CWD/sources/base/conf 
+    NCPU=`grep -c processor /proc/cpuinfo`
+    cat > conf/local.conf <<EOF
+MACHINE ??= '$MACHINE'
+SDKMACHINE ??= '$SDKMACHINE'
+DISTRO ?= '$DISTRO'
+
+BB_NUMBER_THREADS = '$NCPU'
+PARALLEL_MAKE = '-j $NCPU'
+
+CONF_VERSION = "1"
+EOF
+
+    cp $TEMPLATES/* conf/
+
+    generated_config=1
+fi
+
+cat <<EOF
+
+Welcome to Freescale Community BSP
+
+The Yocto Project has extensive documentation about OE including a
+reference manual which can be found at:
+    http://yoctoproject.org/documentation
+
+For more information about OpenEmbedded see their website:
+    http://www.openembedded.org/
+
+You can now run 'bitbake <target>'
+
+Common targets are:
+    core-image-minimal
+    meta-toolchain
+    meta-toolchain-sdk
+    adt-installer
+    meta-ide-support
+
+EOF
+
+if [ -n "$generated_config" ]; then
+    cat <<EOF
+Your build environemnt has been configured with:
+
+    MACHINE=$MACHINE
+    SDKMACHINE=$SDKMACHINE
+    DISTRO=$DISTRO
+EOF
+else
+    echo "Your configuration files at $1 has not been touched."
+fi
+

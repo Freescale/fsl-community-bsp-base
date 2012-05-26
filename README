@@ -1,0 +1,58 @@
+Freescale's Community Yocto BSP
+===============================
+
+This BSP is a community project and offer support for following
+processors:
+
+ * i.MX23
+
+   * Freescale i.MX23 Evaluation Board (imx23evk)
+   * OLIMEX iMX233-OLinuXino-Maxi (imx233-olinuxino-maxi)
+
+ * i.MX28
+
+   * Freescale i.MX28 Evaluation Board (imx28evk)
+
+ * i.MX51
+
+   * Freescale i.MX51 Evaluation Kit (imx51evk)
+
+ * i.MX53
+
+   * Freescale i.MX53 SABRE Automotive board (imx53ard)
+   * Freescale i.MX53 Quick Start Board (imx53qsb)
+
+ * i.MX6
+
+   * Freescale i.MX6Q SABRE Lite (imx6qsabrelite)
+
+Contributing
+------------
+
+To contribute to the development of this BSP and/or submit patches for
+new boards please send the patches against the respective project as
+informated bellow:
+
+The following layers are included on this release:
+
+ * Poky: base build system and metadata
+   GIT: git://git.yoctoproject.org/poky
+   Mailing list: https://lists.yoctoproject.org/listinfo/yocto
+
+ * meta-fsl-arm: support for Freescale's processors and board
+   Project: https://github.com/Freescale/meta-fsl-arm
+   GIT: git://github.com/Freescale/meta-fsl-arm.git
+   Mailing list: http://groups.google.com/group/meta-fsl-arm
+
+ * meta-fsl-arm-extra: support for boards using Freescale's processors
+   Project: https://github.com/Freescale/meta-fsl-arm-extra
+   GIT: git://github.com/Freescale/meta-fsl-extra.git
+   Mailing list: http://groups.google.com/group/meta-fsl-arm 
+   Note: Use [meta-fsl-arm-extra] in subject to easy the processing
+
+ * meta-fsl-demos: demo images and recipes
+   Project: https://github.com/Freescale/meta-fsl-demos
+   GIT: git://github.com/Freescale/meta-fsl-demos.git
+   Mailing list: http://groups.google.com/group/meta-fsl-arm
+   Note: Use [meta-fsl-demos] in subject to easy the processing
+
