@@ -46,7 +46,7 @@ informated bellow:
 
 The following layers are included on this release:
 
- * Poky: base build system and metadata
+ * poky: base build system and metadata
    Path: sources/poky
    GIT: git://git.yoctoproject.org/poky
    Mailing list: https://lists.yoctoproject.org/listinfo/yocto
