@@ -47,21 +47,25 @@ informated bellow:
 The following layers are included on this release:
 
  * Poky: base build system and metadata
+   Path: sources/poky
    GIT: git://git.yoctoproject.org/poky
    Mailing list: https://lists.yoctoproject.org/listinfo/yocto
 
  * meta-fsl-arm: support for Freescale's processors and board
+   Path: sources/meta-fsl-arm
    Project: https://github.com/Freescale/meta-fsl-arm
    GIT: git://github.com/Freescale/meta-fsl-arm.git
    Mailing list: http://groups.google.com/group/meta-fsl-arm
 
  * meta-fsl-arm-extra: support for boards using Freescale's processors
+   Path: sources/meta-fsl-arm-extra
    Project: https://github.com/Freescale/meta-fsl-arm-extra
    GIT: git://github.com/Freescale/meta-fsl-extra.git
    Mailing list: http://groups.google.com/group/meta-fsl-arm 
    Note: Use [meta-fsl-arm-extra] in subject to easy the processing
 
  * meta-fsl-demos: demo images and recipes
+   Path: sources/meta-fsl-demos
    Project: https://github.com/Freescale/meta-fsl-demos
    GIT: git://github.com/Freescale/meta-fsl-demos.git
    Mailing list: http://groups.google.com/group/meta-fsl-arm
