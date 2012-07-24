@@ -18,6 +18,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
+if [ "$(whoami)" = "root" ]; then
+    echo "ERROR: do not use the BSP as root. Exiting..."
+fi
+
 if [ -z "$MACHINE" ]; then
     MACHINE='imx53qsb'
 fi
