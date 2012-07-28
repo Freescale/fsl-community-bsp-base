@@ -9,6 +9,7 @@ processors:
    * Freescale i.MX23 Evaluation Board (imx23evk)
    * OLIMEX iMX233-OLinuXino-Maxi (imx233-olinuxino-maxi)
    * OLIMEX iMX233-OLinuXino-Micro (imx233-olinuxino-micro)
+   * OLIMEX iMX233-OLinuXino-Mini (imx233-olinuxino-mini)
 
  * i.MX28
 
