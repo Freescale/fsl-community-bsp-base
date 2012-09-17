@@ -35,6 +35,7 @@ processors:
  * i.MX6
 
    * Freescale i.MX6Q SABRE Lite (imx6qsabrelite)
+   * Freescale i.MX6Q SABRE SD (imx6qsabresd)
 
 Quick Start Guide
 -----------------
