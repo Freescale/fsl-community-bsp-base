@@ -19,6 +19,10 @@ processors:
 
    * Freescale i.MX31 Platform Development Kit (imx31pdk)
 
+* i.MX35
+
+   * Freescale i.MX35 Platform Development Kit (imx35pdk)
+
  * i.MX51
 
    * Freescale i.MX51 Evaluation Kit (imx51evk)
