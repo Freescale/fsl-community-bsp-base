@@ -15,6 +15,10 @@ processors:
 
    * Freescale i.MX28 Evaluation Board (imx28evk)
 
+ * i.MX31
+
+   * Freescale i.MX31 Platform Development Kit (imx31pdk)
+
  * i.MX51
 
    * Freescale i.MX51 Evaluation Kit (imx51evk)
