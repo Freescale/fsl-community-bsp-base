@@ -162,3 +162,5 @@ else
     echo "Your configuration files at $1 has not been touched."
 fi
 
+# Force the question if setting a new build directory
+unset EULA
