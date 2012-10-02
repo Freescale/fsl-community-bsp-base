@@ -41,6 +41,25 @@ fi
 
 CWD=`pwd`
 
+# Ensure all files in sources/base are kept in sync with project root
+updated=
+for f in $CWD/sources/base/*; do
+    file="$(basename $f)"
+    if [ "$file" = "conf" ] || echo $file | grep -q '~$'; then
+        continue
+    fi
+
+    if ! cmp -s "$file" "$f"; then
+        updated="true"
+        chmod u+w $file
+        cp $f $file
+    fi
+done
+if [ "$updated" = "true" ]; then
+    echo "The project root content has been updated. Please run $0 again."
+    return
+fi
+
 cd $OEROOT
 
 . ./oe-init-build-env $CWD/$1 > /dev/null
