@@ -110,15 +110,20 @@ EOF
 
     more -d $CWD/sources/meta-fsl-arm/EULA
     echo
-    echo -n "Do you accept the EULA you just read? (y/N) "
-    read REPLY
-    if [ "$REPLY" != "y" ] && [ "$REPLY" != "Y" ]; then
-        echo "EULA has not been accepted."
-        EULA="0"
-    else
-        echo "EULA has not been accepted."
-        EULA="1"
-    fi
+    while [ "$EULA" = "ask" ]; do
+        echo -n "Do you accept the EULA you just read? (y/n) "
+        read REPLY
+        case "$REPLY"; in
+            y|Y)
+            echo "EULA has been accepted."
+            EULA="1"
+            ;;
+            n|N)
+            echo "EULA has not been accepted."
+            EULA="0"
+            ;;
+        esac
+    done
 fi
 
 if grep -q '^ACCEPT_FSL_EULA\s*=' conf/local.conf; then
