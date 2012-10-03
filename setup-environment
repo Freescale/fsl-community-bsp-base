@@ -113,7 +113,7 @@ EOF
     while [ "$EULA" = "ask" ]; do
         echo -n "Do you accept the EULA you just read? (y/n) "
         read REPLY
-        case "$REPLY"; in
+        case "$REPLY" in
             y|Y)
             echo "EULA has been accepted."
             EULA="1"
