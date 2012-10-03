@@ -51,7 +51,7 @@ for f in $CWD/sources/base/*; do
 
     if ! cmp -s "$file" "$f"; then
         updated="true"
-        chmod u+w $file
+        [ -e $file ] && chmod u+w $file
         cp $f $file
     fi
 done
