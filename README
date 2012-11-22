@@ -71,19 +71,19 @@ The following layers are included on this release:
    Path: sources/meta-fsl-arm
    Project: https://github.com/Freescale/meta-fsl-arm
    GIT: git://github.com/Freescale/meta-fsl-arm.git
-   Mailing list: http://groups.google.com/group/meta-fsl-arm
+   Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
 
  * meta-fsl-arm-extra: support for boards using Freescale's processors
    Path: sources/meta-fsl-arm-extra
    Project: https://github.com/Freescale/meta-fsl-arm-extra
    GIT: git://github.com/Freescale/meta-fsl-extra.git
-   Mailing list: http://groups.google.com/group/meta-fsl-arm 
+   Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
    Note: Use [meta-fsl-arm-extra] in subject to easy the processing
 
  * meta-fsl-demos: demo images and recipes
    Path: sources/meta-fsl-demos
    Project: https://github.com/Freescale/meta-fsl-demos
    GIT: git://github.com/Freescale/meta-fsl-demos.git
-   Mailing list: http://groups.google.com/group/meta-fsl-arm
+   Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
    Note: Use [meta-fsl-demos] in subject to easy the processing
 
