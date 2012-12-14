@@ -23,7 +23,7 @@ if [ "$(whoami)" = "root" ]; then
 fi
 
 if [ -z "$MACHINE" ]; then
-    MACHINE='imx53qsb'
+    MACHINE='imx6qsabresd'
 fi
 
 if [ -z "$SDKMACHINE" ]; then
