@@ -36,6 +36,8 @@ processors:
 
    * Freescale i.MX6Q SABRE Lite (imx6qsabrelite)
    * Freescale i.MX6Q SABRE SD (imx6qsabresd)
+   * Boundary Devices Nitrogen6X (nitrogen6x)
+
 
 Quick Start Guide
 -----------------
