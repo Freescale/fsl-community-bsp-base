@@ -34,6 +34,8 @@ processors:
 
  * i.MX6
 
+   * Freescale i.MX6SL EVK (imx6slevk)
+   * Freescale i.MX6DL SABRE SD (imx6dlsabresd)
    * Freescale i.MX6Q SABRE Lite (imx6qsabrelite)
    * Freescale i.MX6Q SABRE Smart Device (imx6qsabresd)
    * Boundary Devices Nitrogen6X (nitrogen6x)
