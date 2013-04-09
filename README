@@ -36,8 +36,8 @@ processors:
 
    * Freescale i.MX6SL EVK (imx6slevk)
    * Freescale i.MX6DL SABRE SD (imx6dlsabresd)
-   * Freescale i.MX6Q SABRE Lite (imx6qsabrelite)
    * Freescale i.MX6Q SABRE Smart Device (imx6qsabresd)
+   * Boundary Devices i.MX6Q SABRE Lite (imx6qsabrelite)
    * Boundary Devices Nitrogen6X (nitrogen6x)
    * Wandboard.org Wandboard Dual (wandboard-dual)
    * Congatec Conga-QEVAl Evaluation Carrier Board (cgtqmx6)
