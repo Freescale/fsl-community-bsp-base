@@ -17,6 +17,63 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# Add options for the script
+# Copyright (C) 2013 Freescale Semiconductor, Inc.
+
+NCPU=`grep -c processor /proc/cpuinfo`
+CWD=`pwd`
+PROGNAME="setup-environment"
+
+usage()
+{
+    echo -e "\nUsage: source $PROGNAME <build-dir>
+    <build-dir>: required option; specifies build directory location
+
+By default the script will setup MACHINE to be imx6qsabresd.
+
+Supported machines: `ls sources/*/conf/machine/*.conf \
+| sed s/\.conf//g | sed -r 's/^.+\///' | xargs echo`
+
+To build for a machine listed above, run this script as:
+MACHINE=<machine> source $PROGNAME <build-dir>
+
+The script sets PARALLEL_MAKE & BB_NUMBER_THREADS to $NCPU
+"
+}
+
+clean_up()
+{
+   unset EULA LIST_MACHINES VALID_MACHINE
+   unset NCPU CWD TEMPLATES SHORTOPTS LONGOPTS ARGS PROGNAME
+}
+
+# get command line options
+SHORTOPTS="h"
+LONGOPTS="help"
+
+ARGS=$(getopt --options $SHORTOPTS  \
+  --longoptions $LONGOPTS --name $PROGNAME -- "$@" )
+# Print the usage menu if invalid options are specified
+if [ $? != 0 -o $# -lt 1 ]; then
+   usage && clean_up
+   return 1
+fi
+
+eval set -- "$ARGS"
+while true;
+do
+    case $1 in
+        -h|--help)
+           usage
+           clean_up
+           return 0
+           ;;
+        --)
+           shift
+           break
+           ;;
+    esac
+done
 
 if [ "$(whoami)" = "root" ]; then
     echo "ERROR: do not use the BSP as root. Exiting..."
@@ -24,6 +81,17 @@ fi
 
 if [ -z "$MACHINE" ]; then
     MACHINE='imx6qsabresd'
+fi
+
+# Check the machine type specified
+LIST_MACHINES=`ls $CWD/sources/*/conf/machine`
+VALID_MACHINE=`echo -e "$LIST_MACHINES" | grep ${MACHINE}.conf$ | wc -l`
+if [ "x$MACHINE" = "x" ] || [ "$VALID_MACHINE" = "0" ]; then
+    echo -e "\nSPECIFIED AN INVALID MACHINE TYPE !"
+    usage && clean_up
+    return 1
+else
+    echo "Configuring for ${MACHINE}"
 fi
 
 if [ -z "$SDKMACHINE" ]; then
@@ -38,8 +106,6 @@ OEROOT=sources/poky
 if [ -e sources/oe-core ]; then
     OEROOT=sources/oe-core
 fi
-
-CWD=`pwd`
 
 # Ensure all files in sources/base are kept in sync with project root
 updated=
@@ -74,7 +140,6 @@ if [ ! -e conf/local.conf.sample ]; then
 
     # Generate the local.conf based on the Yocto defaults
     TEMPLATES=$CWD/sources/base/conf 
-    NCPU=`grep -c processor /proc/cpuinfo`
     grep -v '^#\|^$' conf/local.conf.sample > conf/local.conf
     cat >> conf/local.conf <<EOF
 
@@ -167,5 +232,4 @@ else
     echo "Your configuration files at $1 has not been touched."
 fi
 
-# Force the question if setting a new build directory
-unset EULA
+clean_up
