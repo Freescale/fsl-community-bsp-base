@@ -84,7 +84,7 @@ if [ -z "$MACHINE" ]; then
 fi
 
 # Check the machine type specified
-LIST_MACHINES=`ls $CWD/sources/*/conf/machine`
+LIST_MACHINES=`ls -1 $CWD/sources/*/conf/machine`
 VALID_MACHINE=`echo -e "$LIST_MACHINES" | grep ${MACHINE}.conf$ | wc -l`
 if [ "x$MACHINE" = "x" ] || [ "$VALID_MACHINE" = "0" ]; then
     echo -e "\nSPECIFIED AN INVALID MACHINE TYPE !"
