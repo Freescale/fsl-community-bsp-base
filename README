@@ -14,6 +14,13 @@ processors:
  * i.MX28
 
    * Freescale i.MX28 Evaluation Board (imx28evk)
+   * CrystalFontz cfa-10036 (cfa10036)
+   * CrystalFontz cfa-10036+cfa-10037 (cfa10037)
+   * CrystalFontz cfa-10036+cfa-10049 (cfa10049)
+   * CrystalFontz cfa-10036+cfa-10037+cfa-10055 (cfa10055)
+   * CrystalFontz cfa-10036+cfa-10037+cfa-10056 (cfa10056)
+   * CrystalFontz cfa-920 (cfa10057)
+   * CrystalFontz cfa-921 (cfa10058)
 
  * i.MX31
 
