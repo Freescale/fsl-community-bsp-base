@@ -1,54 +1,12 @@
 Freescale's Community Yocto BSP
 ===============================
 
-This BSP is a community project and offer support for following
-processors:
+Supported boards
+----------------
 
- * i.MX23
+In order to know the supported boards, please, see the release notes at
 
-   * Freescale i.MX23 Evaluation Board (imx23evk)
-   * OLIMEX iMX233-OLinuXino-Maxi (imx233-olinuxino-maxi)
-   * OLIMEX iMX233-OLinuXino-Micro (imx233-olinuxino-micro)
-   * OLIMEX iMX233-OLinuXino-Mini (imx233-olinuxino-mini)
-
- * i.MX28
-
-   * Freescale i.MX28 Evaluation Board (imx28evk)
-   * CrystalFontz cfa-10036 (cfa10036)
-   * CrystalFontz cfa-10036+cfa-10037 (cfa10037)
-   * CrystalFontz cfa-10036+cfa-10049 (cfa10049)
-   * CrystalFontz cfa-10036+cfa-10037+cfa-10055 (cfa10055)
-   * CrystalFontz cfa-10036+cfa-10037+cfa-10056 (cfa10056)
-   * CrystalFontz cfa-920 (cfa10057)
-   * CrystalFontz cfa-921 (cfa10058)
-
- * i.MX31
-
-   * Freescale i.MX31 Platform Development Kit (imx31pdk)
-
-* i.MX35
-
-   * Freescale i.MX35 Platform Development Kit (imx35pdk)
-
- * i.MX51
-
-   * Freescale i.MX51 Evaluation Kit (imx51evk)
-
- * i.MX53
-
-   * Freescale i.MX53 SABRE Automotive board (imx53ard)
-   * Freescale i.MX53 Quick Start Board (imx53qsb)
-
- * i.MX6
-
-   * Freescale i.MX6SL EVK (imx6slevk)
-   * Freescale i.MX6DL SABRE SD (imx6dlsabresd)
-   * Freescale i.MX6Q SABRE Smart Device (imx6qsabresd)
-   * Boundary Devices i.MX6Q SABRE Lite (imx6qsabrelite)
-   * Boundary Devices Nitrogen6X (nitrogen6x)
-   * Wandboard.org Wandboard Solo (wandboard-solo)
-   * Wandboard.org Wandboard Dual (wandboard-dual)
-   * Congatec Conga-QEVAl Evaluation Carrier Board (cgtqmx6)
+   http://freescale.github.io/doc/release-notes/1.5/
 
 Quick Start Guide
 -----------------
