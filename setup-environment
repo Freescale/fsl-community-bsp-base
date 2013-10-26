@@ -156,6 +156,13 @@ EOF
 
     cp $TEMPLATES/* conf/
 
+    for s in $HOME/.oe $HOME/.yocto; do
+        if [ -e $s/site.conf ]; then
+            echo "Linking $s/site.conf to conf/site.conf"
+            ln -s $s/site.conf conf
+        fi
+    done
+
     generated_config=1
 fi
 
