@@ -45,6 +45,8 @@ clean_up()
 {
    unset EULA LIST_MACHINES VALID_MACHINE
    unset NCPU CWD TEMPLATES SHORTOPTS LONGOPTS ARGS PROGNAME
+   unset generated_config updated
+   unset MACHINE SDKMACHINE DISTRO OEROOT
 }
 
 # get command line options
