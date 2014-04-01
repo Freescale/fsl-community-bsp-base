@@ -27,9 +27,9 @@ PROGNAME="setup-environment"
 usage()
 {
     echo -e "\nUsage: source $PROGNAME <build-dir>
-    <build-dir>: required option; specifies build directory location
+    <build-dir>: specifies the build directory location (required)
 
-By default the script will setup MACHINE to be imx6qsabresd.
+If undefined, this script will set \$MACHINE to 'imx6qsabresd'.
 
 Supported machines: `ls sources/*/conf/machine/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs echo`
@@ -89,7 +89,7 @@ fi
 LIST_MACHINES=`ls -1 $CWD/sources/*/conf/machine`
 VALID_MACHINE=`echo -e "$LIST_MACHINES" | grep ${MACHINE}.conf$ | wc -l`
 if [ "x$MACHINE" = "x" ] || [ "$VALID_MACHINE" = "0" ]; then
-    echo -e "\nSPECIFIED AN INVALID MACHINE TYPE !"
+    echo -e "\nThe \$MACHINE you have specified ($MACHINE) is not supported by this build setup"
     usage && clean_up
     return 1
 else
@@ -124,7 +124,7 @@ for f in $CWD/sources/base/*; do
     fi
 done
 if [ "$updated" = "true" ]; then
-    echo "The project root content has been updated. Please run script again."
+    echo "The project root content has been updated. Please run '$PROGNAME' again."
     return
 fi
 
@@ -176,9 +176,9 @@ fi
 if [ "$EULA" = "ask" ]; then
     cat <<EOF
 
-Some SoC depends on libraries and packages that are covered by
-Freescale EULA. To have the right to use those binaries in your images
-you need to read and accept the EULA that will be displayed.
+Some BSPs depend on libraries and packages which are covered by Freescale's
+End User License Agreement (EULA). To have the right to use these binaries in
+your images, you need to read and accept the following...
 
 EOF
 
@@ -240,7 +240,7 @@ Your build environemnt has been configured with:
     EULA=$EULA
 EOF
 else
-    echo "Your configuration files at $1 has not been touched."
+    echo "Your configuration files at $1 have not been touched."
 fi
 
 clean_up
