@@ -36,8 +36,6 @@ Supported machines: `ls sources/*/conf/machine/*.conf \
 
 To build for a machine listed above, run this script as:
 MACHINE=<machine> source $PROGNAME <build-dir>
-
-The script sets PARALLEL_MAKE & BB_NUMBER_THREADS to $NCPU
 "
 }
 
