@@ -91,7 +91,9 @@ if [ "x$MACHINE" = "x" ] || [ "$VALID_MACHINE" = "0" ]; then
     usage && clean_up
     return 1
 else
-    echo "Configuring for ${MACHINE}"
+    if [ ! -e $1/conf/local.conf.sample ]; then
+        echo "Configuring for ${MACHINE}"
+    fi
 fi
 
 if [ -z "$SDKMACHINE" ]; then
