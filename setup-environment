@@ -47,13 +47,18 @@ usage()
     <build-dir>: specifies the build directory location (required)
 
 If undefined, this script will set \$MACHINE to 'imx6qsabresd'.
+"
 
+    ls sources/*/conf/machine/*.conf > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo -e "
 Supported machines: `echo; ls sources/*/conf/machine/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
 To build for a machine listed above, run this script as:
 MACHINE=<machine> source $PROGNAME <build-dir>
 "
+    fi
 }
 
 clean_up()
