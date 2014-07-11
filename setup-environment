@@ -24,23 +24,6 @@ NCPU=`grep -c processor /proc/cpuinfo`
 CWD=`pwd`
 PROGNAME="setup-environment"
 
-# try to determine if this script has been invoked correctly
-# in other words, make sure it has been "source"d
-# don't exit out immediately, allow the user to ask for -h
-INVOKEGOOD=1
-if [ -n "$ZSH_NAME" ]; then
-    # check for zsh
-    if [ -n "$BASH_SOURCE" ]; then
-        INVOKEGOOD=0
-    fi
-else
-    # check for bash, sh, and dash
-    echo $0 | grep -q $PROGNAME
-    if [ $? -eq 0 ]; then
-        INVOKEGOOD=0
-    fi
-fi
-
 usage()
 {
     echo -e "\nUsage: source $PROGNAME <build-dir>
@@ -77,10 +60,6 @@ ARGS=$(getopt --options $SHORTOPTS  \
   --longoptions $LONGOPTS --name $PROGNAME -- "$@" )
 # Print the usage menu if invalid options are specified
 if [ $? != 0 -o $# -lt 1 ]; then
-   if [ $INVOKEGOOD = 0 ]; then
-       echo "Error: This script needs to be sourced. Please run as '. $PROGNAME'"
-       exit 1
-   fi
    usage && clean_up
    return 1
 fi
@@ -92,9 +71,6 @@ do
         -h|--help)
            usage
            clean_up
-           if [ $INVOKEGOOD = 0 ]; then
-               exit 0
-           fi
            return 0
            ;;
         --)
@@ -103,11 +79,6 @@ do
            ;;
     esac
 done
-
-if [ $INVOKEGOOD = 0 ]; then
-    echo "Error: This script needs to be sourced. Please run as '. $PROGNAME'"
-    exit 1
-fi
 
 if [ "$(whoami)" = "root" ]; then
     echo "ERROR: do not use the BSP as root. Exiting..."
