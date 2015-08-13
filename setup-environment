@@ -210,12 +210,12 @@ EOF
             ;;
         esac
     done
-fi
 
-if grep -q '^ACCEPT_FSL_EULA\s*=' conf/local.conf; then
-    sed -i "s/^#*ACCEPT_FSL_EULA\s*=.*/ACCEPT_FSL_EULA = \"$EULA\"/g" conf/local.conf
-else
-    echo "ACCEPT_FSL_EULA = \"$EULA\"" >> conf/local.conf
+    if grep -q '^ACCEPT_FSL_EULA\s*=' conf/local.conf; then
+        sed -i "s/^#*ACCEPT_FSL_EULA\s*=.*/ACCEPT_FSL_EULA = \"$EULA\"/g" conf/local.conf
+    else
+        echo "ACCEPT_FSL_EULA = \"$EULA\"" >> conf/local.conf
+    fi
 fi
 
 cat <<EOF
