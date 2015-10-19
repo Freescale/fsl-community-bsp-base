@@ -20,7 +20,6 @@
 # Add options for the script
 # Copyright (C) 2013 Freescale Semiconductor, Inc.
 
-NCPU=`grep -c processor /proc/cpuinfo`
 CWD=`pwd`
 PROGNAME="setup-environment"
 
@@ -47,7 +46,7 @@ MACHINE=<machine> source $PROGNAME <build-dir>
 clean_up()
 {
    unset EULA LIST_MACHINES VALID_MACHINE
-   unset NCPU CWD TEMPLATES SHORTOPTS LONGOPTS ARGS PROGNAME
+   unset CWD TEMPLATES SHORTOPTS LONGOPTS ARGS PROGNAME
    unset generated_config updated
    unset MACHINE SDKMACHINE DISTRO OEROOT
 }
@@ -154,9 +153,6 @@ if [ ! -e conf/local.conf.sample ]; then
     TEMPLATES=$CWD/sources/base/conf 
     grep -v '^#\|^$' conf/local.conf.sample > conf/local.conf
     cat >> conf/local.conf <<EOF
-
-BB_NUMBER_THREADS = '$NCPU'
-PARALLEL_MAKE = '-j $NCPU'
 
 DL_DIR ?= "\${BSPDIR}/downloads/"
 EOF
