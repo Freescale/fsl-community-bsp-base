@@ -203,7 +203,7 @@ EOF
 
     sleep 4
 
-    more -d $CWD/sources/meta-fsl-arm/EULA
+    more -d $CWD/sources/meta-freescale/EULA
     echo
     REPLY=
     while [ -z "$REPLY" ]; do

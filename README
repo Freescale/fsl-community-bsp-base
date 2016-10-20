@@ -38,23 +38,22 @@ The following layers are included on this release:
    Mailing list: http://lists.linuxtogo.org/cgi-bin/mailman/listinfo/openembedded-devel
    Note: Use [meta-oe] in subject to easy the processing
 
- * meta-fsl-arm: support for Freescale's processors and board
-   Path: sources/meta-fsl-arm
-   Project: https://github.com/Freescale/meta-fsl-arm
-   GIT: git://github.com/Freescale/meta-fsl-arm.git
+ * meta-freescale: support for Freescale's processors and board
+   Path: sources/meta-freescale
+   Project: https://github.com/Freescale/meta-freescale
+   GIT: git://github.com/Freescale/meta-freescale.git
    Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
 
- * meta-fsl-arm-extra: support for boards using Freescale's processors
-   Path: sources/meta-fsl-arm-extra
-   Project: https://github.com/Freescale/meta-fsl-arm-extra
-   GIT: git://github.com/Freescale/meta-fsl-extra.git
+ * meta-freescale-3rdparty: support for boards using Freescale's processors
+   Path: sources/meta-freescale-3rdparty
+   Project: https://github.com/Freescale/meta-freescale-3rdparty
+   GIT: git://github.com/Freescale/meta-freescale-3rdparty.git
    Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
-   Note: Use [meta-fsl-arm-extra] in subject to easy the processing
+   Note: Use [3rdparty] in subject to easy the processing
 
- * meta-fsl-demos: demo images and recipes
-   Path: sources/meta-fsl-demos
-   Project: https://github.com/Freescale/meta-fsl-demos
-   GIT: git://github.com/Freescale/meta-fsl-demos.git
+ * meta-freescale-distro: distribution images and recipes
+   Path: sources/meta-freescale-distro
+   Project: https://github.com/Freescale/meta-freescale-distro
+   GIT: git://github.com/Freescale/meta-freescale-distro.git
    Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
-   Note: Use [meta-fsl-demos] in subject to easy the processing
-
+   Note: Use [distro] in subject to easy the processing
