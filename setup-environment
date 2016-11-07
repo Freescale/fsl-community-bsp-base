@@ -27,19 +27,25 @@ usage()
 {
     echo -e "\nUsage: source $PROGNAME <build-dir>
     <build-dir>: specifies the build directory location (required)
+    <distro>:    specifies the distro name
 
 If undefined, this script will set \$MACHINE to 'imx6qsabresd'.
+You need to set DISTRO to use this environment.
 "
 
     ls sources/*/conf/machine/*.conf > /dev/null 2>&1
+    ls sources/meta-freescale-distro/conf/distro/fslc-*.conf > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "
 Supported machines: `echo; ls sources/*/conf/machine/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
-To build for a machine listed above, run this script as:
-MACHINE=<machine> source $PROGNAME <build-dir>
-"
+Supported distros: `echo; ls sources/meta-freescale-distro/conf/distro/fslc-*.conf \
+| sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
+
+To build for a distro and machine listed above, run this script as:
+MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
+Ex: MACHINE=imx6qsabresd DISTRO=fslc-framebuffer source $PROGNAME build"
     fi
 }
 
@@ -105,7 +111,19 @@ if [ -z "$SDKMACHINE" ]; then
 fi
 
 if [ -z "$DISTRO" ]; then
-    DISTRO='poky'
+    echo "You must set DISTRO before setting up the environment."
+fi
+# Check the machine type specified
+LIST_DISTROS=`ls -1 $CWD/sources/meta-freescale-distro/conf/distro`
+VALID_DISTRO=`echo -e "$LIST_DISTROS" | grep ${DISTRO}.conf$ | wc -l`
+if [ "x$DISTRO" = "x" ] || [ "$VALID_DISTRO" = "0" ]; then
+    echo -e "The \$DISTRO you have specified ($DISTRO) is not supported by this build setup\n"
+    usage && clean_up
+    return 1
+else
+    if [ ! -e $1/conf/local.conf.sample ]; then
+        echo "Configuring for ${DISTRO}"
+    fi
 fi
 
 OEROOT=$PWD/sources/poky
