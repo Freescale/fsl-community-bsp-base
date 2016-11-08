@@ -25,12 +25,12 @@ PROGNAME="setup-environment"
 
 usage()
 {
-    echo -e "\nUsage: source $PROGNAME <build-dir>
+    echo -e "\nUsage:MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
     <build-dir>: specifies the build directory location (required)
-    <distro>:    specifies the distro name
+    <machine>:   specifies the machine name (required)
+    <distro>:    specifies the distro name (required)
 
-If undefined, this script will set \$MACHINE to 'imx6qsabresd'.
-You need to set DISTRO to use this environment.
+You must set \$MACHINE and \$DISTRO before setting up the environment.
 "
 
     ls sources/*/conf/machine/*.conf > /dev/null 2>&1
@@ -40,10 +40,10 @@ You need to set DISTRO to use this environment.
 Supported machines: `echo; ls sources/*/conf/machine/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
-Supported distros: `echo; ls sources/meta-freescale-distro/conf/distro/fslc-*.conf \
+Supported Freescale's distros: `echo; ls sources/meta-freescale-distro/conf/distro/fslc-*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
-To build for a distro and machine listed above, run this script as:
+To build for a machine and distro listed above, run this script as:
 MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
 Ex: MACHINE=imx6qsabresd DISTRO=fslc-framebuffer source $PROGNAME build"
     fi
