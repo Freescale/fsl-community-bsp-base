@@ -43,6 +43,9 @@ Supported machines: `echo; ls sources/*/conf/machine/*.conf \
 Supported Freescale's distros: `echo; ls sources/meta-freescale-distro/conf/distro/fslc-*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
+Available Poky's distros: `echo; ls sources/poky/meta-poky/conf/distro/*.conf \
+| sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
+
 To build for a machine and distro listed above, run this script as:
 MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
 Ex: MACHINE=imx6qsabresd DISTRO=fslc-framebuffer source $PROGNAME build"
