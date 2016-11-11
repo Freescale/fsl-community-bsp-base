@@ -25,12 +25,21 @@ PROGNAME="setup-environment"
 
 usage()
 {
-    echo -e "\nUsage:MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
-    <build-dir>: specifies the build directory location (required)
-    <machine>:   specifies the machine name (required)
-    <distro>:    specifies the distro name (required)
+    echo -e "
+Usage: MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
+Usage:                                   source $PROGNAME <build-dir>
+    <machine>    machine name
+    <distro>     distro name
+    <build-dir>  build directory
 
-You must set \$MACHINE and \$DISTRO before setting up the environment.
+The first usage is for creating a new build directory. In this case, the
+script creates the build directory <build-dir>, configures it for the
+specified <machine> and <distro>, and prepares the calling shell for running
+bitbake on the build directory.
+
+The second usage is for using an existing build directory. In this case,
+the script prepares the calling shell for running bitbake on the build
+directory <build-dir>. The build directory configuration is unchanged.
 "
 
     ls sources/*/conf/machine/*.conf > /dev/null 2>&1
@@ -46,9 +55,14 @@ Supported Freescale's distros: `echo; ls sources/meta-freescale-distro/conf/dist
 Available Poky's distros: `echo; ls sources/poky/meta-poky/conf/distro/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
-To build for a machine and distro listed above, run this script as:
-MACHINE=<machine> DISTRO=<distro> source $PROGNAME <build-dir>
-Ex: MACHINE=imx6qsabresd DISTRO=fslc-framebuffer source $PROGNAME build"
+Examples:
+
+- To create a new Yocto build directory:
+  $ MACHINE=imx6qsabresd DISTRO=fslc-framebuffer source $PROGNAME build
+
+- To use an existing Yocto build directory:
+  $ source $PROGNAME build
+"
     fi
 }
 
@@ -92,9 +106,15 @@ if [ "$(whoami)" = "root" ]; then
     echo "ERROR: do not use the BSP as root. Exiting..."
 fi
 
-if [ -z "$MACHINE" ]; then
+if [ ! -e $1/conf/local.conf.sample ]; then
+    build_dir_setup_enabled="true"
+else
+    build_dir_setup_enabled="false"
+fi
+
+if [ "$build_dir_setup_enabled" = "true" ] && [ -z "$MACHINE" ]; then
     usage
-    echo -e "\nYou must set \$MACHINE before setting up the environment."
+    echo -e "ERROR: You must set MACHINE when creating a new build directory."
     clean_up
     return 1
 fi
@@ -103,9 +123,9 @@ if [ -z "$SDKMACHINE" ]; then
     SDKMACHINE='i686'
 fi
 
-if [ -z "$DISTRO" ]; then
+if [ "$build_dir_setup_enabled" = "true" ] && [ -z "$DISTRO" ]; then
     usage
-    echo -e "\nYou must set \$DISTRO before setting up the environment."
+    echo -e "ERROR: You must set DISTRO when creating a new build directory."
     clean_up
     return 1
 fi
@@ -146,7 +166,7 @@ fi
 export PATH="`echo $PATH | sed 's/\(:.\|:\)*:/:/g;s/^.\?://;s/:.\?$//'`"
 
 generated_config=
-if [ ! -e conf/local.conf.sample ]; then
+if [ "$build_dir_setup_enabled" = "true" ]; then
     mv conf/local.conf conf/local.conf.sample
 
     # Generate the local.conf based on the Yocto defaults
