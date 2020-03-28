@@ -131,6 +131,13 @@ if [ "$build_dir_setup_enabled" = "true" ] && [ -z "$DISTRO" ]; then
     return 1
 fi
 
+[ -z "$FSL_EULA_FILE" ] && FSL_EULA_FILE=$CWD/sources/meta-freescale/EULA
+if [ ! -e $FSL_EULA_FILE ]; then
+    echo -e "ERROR: EULA not found at $FSL_EULA_FILE."
+    clean_up
+    return 1
+fi
+
 OEROOT=$PWD/sources/poky
 if [ -e $PWD/sources/oe-core ]; then
     OEROOT=$PWD/sources/oe-core
@@ -208,7 +215,7 @@ EOF
 
     sleep 4
 
-    more -d $CWD/sources/meta-freescale/EULA
+    more -d $FSL_EULA_FILE
     echo
     REPLY=
     while [ -z "$REPLY" ]; do
