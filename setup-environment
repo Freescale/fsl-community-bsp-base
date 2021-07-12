@@ -207,7 +207,7 @@ else
     # accepts the FSL EULA:
     cat <<EOF
 
-Some BSPs depend on libraries and packages which are covered by Freescale's
+Some BSPs depend on libraries and packages which are covered by NXP's
 End User License Agreement (EULA). To have the right to use these binaries in
 your images, you need to read and accept the following...
 
