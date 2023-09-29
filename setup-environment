@@ -45,12 +45,15 @@ directory <build-dir>. The build directory configuration is unchanged.
 
     ls sources/*/conf/machine/*.conf > /dev/null 2>&1
     ls sources/meta-freescale-distro/conf/distro/fslc-*.conf > /dev/null 2>&1
+    ls sources/meta-freescale-distro/conf/distro/fsl-*.conf > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "
 Supported machines: `echo; ls sources/*/conf/machine/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
 Supported Freescale's distros: `echo; ls sources/meta-freescale-distro/conf/distro/fslc-*.conf \
+| sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
+`echo; ls sources/meta-freescale-distro/conf/distro/fsl-*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
 Available Poky's distros: `echo; ls sources/poky/meta-poky/conf/distro/*.conf \
