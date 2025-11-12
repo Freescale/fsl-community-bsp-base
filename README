@@ -27,10 +27,20 @@ informated bellow:
 
 The following layers are included on this release:
 
- * poky: base build system and metadata
-   Path: sources/poky
-   GIT: git://git.yoctoproject.org/poky
-   Mailing list: https://lists.yoctoproject.org/listinfo/yocto
+ * openembedded-core: base metadata
+   Path: sources/openembedded-core
+   GIT: git://git.openembedded.org/openembedded-core
+   Mailing list: https://lists.openembedded.org/g/openembedded-core
+
+ * bitbake: build framework
+   Path: sources/bitbake
+   GIT: git://git.openembedded.org/bitbake
+   Mailing list: https://lists.openembedded.org/g/bitbake-devel
+
+ * poky: reference distro and hardware BSP
+   Path: sources/meta-yocto
+   GIT: git://git.yoctoproject.org/meta-yocto
+   Mailing list: https://lists.yoctoproject.org/listinfo/poky
 
  * meta-openembedded: extra packages and features
    Path: sources/meta-openembedded
