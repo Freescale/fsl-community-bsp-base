@@ -165,6 +165,9 @@ if [ "$build_dir_setup_enabled" = "true" ]; then
 
 DL_DIR ?= "\${BSPDIR}/downloads/"
 EOF
+    if ! grep -q "DISTRO ?=" conf/local.conf; then
+        sed "1iDISTRO ?= '$DISTRO'" -i conf/local.conf
+    fi
     # Change settings according environment
     sed -e "s,MACHINE ??=.*,MACHINE ??= '$MACHINE',g" \
         -e "s,SDKMACHINE ??=.*,SDKMACHINE ??= '$SDKMACHINE',g" \
