@@ -52,18 +52,15 @@ The following layers are included on this release:
    Path: sources/meta-freescale
    Project: https://github.com/Freescale/meta-freescale
    GIT: git://github.com/Freescale/meta-freescale.git
-   Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
 
  * meta-freescale-3rdparty: support for boards using Freescale's processors
    Path: sources/meta-freescale-3rdparty
    Project: https://github.com/Freescale/meta-freescale-3rdparty
    GIT: git://github.com/Freescale/meta-freescale-3rdparty.git
-   Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
    Note: Use [3rdparty] in subject to easy the processing
 
  * meta-freescale-distro: distribution images and recipes
    Path: sources/meta-freescale-distro
    Project: https://github.com/Freescale/meta-freescale-distro
    GIT: git://github.com/Freescale/meta-freescale-distro.git
-   Mailing list: https://lists.yoctoproject.org/listinfo/meta-freescale
    Note: Use [distro] in subject to easy the processing
